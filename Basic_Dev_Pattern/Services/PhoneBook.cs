@@ -1,9 +1,13 @@
 ﻿using Basic_Dev_Pattern.Models;
+using Microsoft.Extensions.Logging;
 
 namespace Basic_Dev_Pattern.Services
 {
-    public class PhoneBook : IPhoneBook
+    public class PhoneBook(IConfiguration configuration, ILogger<PhoneBook> logger) : IPhoneBook
     {
+        private readonly IConfiguration _configuration = configuration;
+        private readonly ILogger<PhoneBook> _logger = logger;
+
         public PersonModel GetPerson(int id)
         {
             var person = new List<PersonModel>()
@@ -20,6 +24,12 @@ namespace Basic_Dev_Pattern.Services
 
         public IEnumerable<PersonModel> GetPersons()
         {
+            //var getApsettingsVal = _configuration["AppSettings:DbConnection"];
+
+            var getApsettingsVal = _configuration.GetValue<string>("AppSettings:MyKey1");
+
+            _logger.LogInformation(message: getApsettingsVal);
+
             var persons = new List<PersonModel>()
             {
                  new() { Id = 1, Name = "Aijaz", Age = 30 },
