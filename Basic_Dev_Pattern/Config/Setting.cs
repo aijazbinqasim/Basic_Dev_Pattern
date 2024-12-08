@@ -6,6 +6,7 @@
         public User? User { get; set; }
         public Password? Password { get; set; }
         public Validation? Validation { get; set; }
+        public Programming? Programming { get; set; }
     }
 
     public class User
@@ -21,5 +22,10 @@
     public class Validation
     {
         public bool? RememberMe { get; set; }
+    }
+
+    public class Programming
+    {
+        public IList<string>? Languages { get; set; }
     }
 }

@@ -20,7 +20,8 @@ namespace Basic_Dev_Pattern.Controllers
             {
                 Username = _setting.User!.UserName,
                 Password = _setting.Password!.UserPwd,
-                Rememberme = _setting.Validation!.RememberMe
+                Rememberme = _setting.Validation!.RememberMe,
+                Languages = _setting.Programming!.Languages
             };
 
             return Ok(user);
@@ -32,5 +33,6 @@ namespace Basic_Dev_Pattern.Controllers
         public string? Username { get; set; }
         public string? Password { get; set; }
         public bool? Rememberme { get; set; }
+        public IList<string>? Languages { get; set; }
     }
 }
